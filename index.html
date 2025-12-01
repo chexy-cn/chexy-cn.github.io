@@ -1,62 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Portfolio</title>
-    <meta name="description" content="Personal Portfolio & AI Resume" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: {
-                50: '#f5f3ff',
-                100: '#ede9fe',
-                200: '#ddd6fe',
-                300: '#c4b5fd',
-                400: '#a78bfa',
-                500: '#8b5cf6',
-                600: '#7c3aed',
-                700: '#6d28d9',
-                800: '#5b21b6',
-                900: '#4c1d95',
-              }
-            },
-            animation: {
-              'fade-in': 'fadeIn 0.5s ease-out',
-              'slide-up': 'slideUp 0.5s ease-out',
-            },
-            keyframes: {
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
-              },
-              slideUp: {
-                '0%': { transform: 'translateY(20px)', opacity: '0' },
-                '100%': { transform: 'translateY(0)', opacity: '1' },
-              }
-            }
-          },
-        },
-      }
-    </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
-  }
-}
-</script>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog - 技术博客</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-  <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <div id="root"></div>
-  </body>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="#home" class="logo">My Blog</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a></li>
+                <li><a href="#blog" class="nav-link">博客</a></li>
+                <li><a href="#projects" class="nav-link">项目</a></li>
+                <li><a href="#about" class="nav-link">关于</a></li>
+                <li><a href="#contact" class="nav-link">联系</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    欢迎来到我的技术博客
+                </h1>
+                <p class="hero-subtitle">
+                    在这里分享编程经验、技术思考和项目实践
+                </p>
+                <div class="hero-actions">
+                    <a href="#blog" class="btn btn-primary">查看博客</a>
+                    <a href="#about" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section blog-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>最新文章</h2>
+                <p>分享最新的技术思考和经验</p>
+            </div>
+            <div id="blog-list" class="blog-grid">
+                <!-- Blog posts will be dynamically loaded here -->
+            </div>
+            <div class="section-footer">
+                <a href="#" class="btn btn-outline">查看所有文章</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>我的项目</h2>
+                <p>一些正在进行或已完成的技术项目</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">💻</div>
+                    <h3>个人博客网站</h3>
+                    <p>使用HTML、CSS、JavaScript构建的响应式个人博客平台</p>
+                    <div class="project-tags">
+                        <span class="tag">Web开发</span>
+                        <span class="tag">前端</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">🔧</div>
+                    <h3>工具库开发</h3>
+                    <p>开发实用的前端工具库和组件，提升开发效率</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">工具库</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">📊</div>
+                    <h3>数据可视化</h3>
+                    <p>使用现代技术实现数据可视化和分析工具</p>
+                    <div class="project-tags">
+                        <span class="tag">数据可视化</span>
+                        <span class="tag">图表</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-header">
+                        <h2>关于我</h2>
+                        <p>热情的技术爱好者和终身学习者</p>
+                    </div>
+                    <div class="about-details">
+                        <p>我是一名对技术充满热情的前端开发者，喜欢探索新的编程语言和技术框架。</p>
+                        <p>在日常工作中，我专注于创建优雅、高效的Web应用程序，同时也在持续学习和分享。</p>
+                        <div class="skills">
+                            <h4>技术栈</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Git</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="avatar">👨‍💻</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>联系我</h2>
+                <p>有什么问题或想法？欢迎联系交流</p>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="你的名字" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="你的邮箱" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="你的消息" rows="5" required class="form-textarea"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">发送消息</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Blog Detail Overlay -->
+    <div id="blog-detail" class="blog-detail" style="display: none;">
+        <div class="blog-detail-container">
+            <button id="back-to-blog" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+                返回博客
+            </button>
+            <article class="blog-article">
+                <header class="blog-header">
+                    <h1 id="blog-title"></h1>
+                    <div class="blog-meta">
+                        <span id="blog-date" class="blog-date"></span>
+                        <span id="blog-category" class="blog-category"></span>
+                    </div>
+                </header>
+                <div id="blog-content" class="blog-content">
+                    <!-- Blog content will be loaded here -->
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#home" class="logo">My Blog</a>
+                    <p>分享技术与思考</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>导航</h4>
+                        <ul>
+                            <li><a href="#home">首页</a></li>
+                            <li><a href="#blog">博客</a></li>
+                            <li><a href="#projects">项目</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>链接</h4>
+                        <ul>
+                            <li><a href="#about">关于</a></li>
+                            <li><a href="#contact">联系</a></li>
+                            <li><a href="#">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 My Blog. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
