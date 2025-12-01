@@ -32,11 +32,21 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--bg-primary);
-    background-image: var(--bg-stars-desktop); /* 默认使用PC端背景 */
+}
+
+/* 整页背景使用天琴三颗星竖版图片 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--bg-stars-mobile);
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: -1;
 }
 
 .container {
@@ -116,12 +126,32 @@ p { margin-bottom: 1rem; }
 
 /* Hero Section */
 .hero {
-    padding: 120px 0 80px;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+    padding: 150px 0 100px;
+    background-image: var(--bg-stars-desktop); /* 使用天琴三颗星横版图片作为顶部背景 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: white;
     text-align: center;
     position: relative;
     overflow: hidden;
+}
+
+/* Hero区域覆盖渐变层，增强文字可读性 */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(38, 99, 235, 0.5) 0%, rgba(101, 31, 255, 0.5) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-title {
@@ -529,9 +559,16 @@ p { margin-bottom: 1rem; }
 /* Responsive Design */
 @media (max-width: 768px) {
     /* 移动端背景图片切换 */
-    body {
+    body::before {
         background-image: var(--bg-stars-mobile); /* 移动端使用竖版背景 */
         background-attachment: scroll; /* 移动端禁用固定背景 */
+    }
+
+    /* 移动端Hero区域样式调整 */
+    .hero {
+        background-attachment: scroll; /* 移动端禁用固定背景 */
+        padding: 100px 0 60px;
+        background-image: var(--bg-stars-mobile); /* 移动端顶部也用竖版 */
     }
 
     .nav-menu {
@@ -605,5 +642,12 @@ p { margin-bottom: 1rem; }
     .blog-card,
     .project-card {
         padding: 1.5rem;
+    }
+}
+
+/* PC端横版背景优化 */
+@media (min-width: 769px) {
+    body::before {
+        background-image: var(--bg-stars-desktop); /* PC端使用横版背景 */
     }
 }
