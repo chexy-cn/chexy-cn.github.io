@@ -1,0 +1,19 @@
+# 背景图片占位说明
+
+此目录用于存放天琴三颗星的背景图片：
+
+1. lyra-stars-horizontal.jpg - PC端横版背景 (16:9)
+2. lyra-stars-vertical.jpg  - 移动端竖版背景 (9:16)
+
+如果您还没有合适的图片，可以使用以下临时链接：
+
+PC端横版占位：https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1920&h=1080
+移动端竖版占位：https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1080&h=1920
+
+或者搜索以下关键词获取免费星空图片：
+- "Lyra constellation"
+- "Summer Triangle stars"
+- "Vega Deneb Altair"
+- "Night sky stars"
+
+获得图片后，请分别命名为上述文件名并放在此目录中。

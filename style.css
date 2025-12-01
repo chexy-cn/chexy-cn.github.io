@@ -21,6 +21,10 @@
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* 天琴三颗星背景配置 */
+    --bg-stars-desktop: url('assets/lyra-stars-horizontal.jpg'); /* PC端横版背景 */
+    --bg-stars-mobile: url('assets/lyra-stars-vertical.jpg');   /* 移动端竖版背景 */
 }
 
 body {
@@ -28,6 +32,11 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--bg-primary);
+    background-image: var(--bg-stars-desktop); /* 默认使用PC端背景 */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -108,9 +117,11 @@ p { margin-bottom: 1rem; }
 /* Hero Section */
 .hero {
     padding: 120px 0 80px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
     color: white;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-title {
@@ -118,6 +129,7 @@ p { margin-bottom: 1rem; }
     font-weight: 700;
     margin-bottom: 1rem;
     color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
@@ -181,10 +193,14 @@ p { margin-bottom: 1rem; }
 /* Section Styles */
 .section {
     padding: 80px 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .section:nth-child(even) {
-    background: var(--bg-secondary);
+    background: rgba(248, 250, 252, 0.85);
 }
 
 .section-header {
@@ -214,13 +230,14 @@ p { margin-bottom: 1rem; }
 }
 
 .blog-card {
-    background: var(--bg-primary);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
     transition: all 0.3s;
     cursor: pointer;
+    backdrop-filter: blur(10px);
 }
 
 .blog-card:hover {
@@ -254,13 +271,14 @@ p { margin-bottom: 1rem; }
 }
 
 .project-card {
-    background: var(--bg-primary);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: var(--border-radius);
     padding: 2rem;
     text-align: center;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
     transition: all 0.3s;
+    backdrop-filter: blur(10px);
 }
 
 .project-card:hover {
@@ -510,6 +528,12 @@ p { margin-bottom: 1rem; }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* 移动端背景图片切换 */
+    body {
+        background-image: var(--bg-stars-mobile); /* 移动端使用竖版背景 */
+        background-attachment: scroll; /* 移动端禁用固定背景 */
+    }
+
     .nav-menu {
         display: none;
     }
