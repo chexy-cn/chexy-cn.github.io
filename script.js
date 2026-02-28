@@ -30,7 +30,6 @@ const translations = {
         skill4: "LaTeX",
         skill5: "示例标签",
         backBtn: "返回文章列表",
-        footerSub: "探索宇宙，记录思考",
         footerNavTitle: "导航",
         footerLinkTitle: "链接"
     },
@@ -64,7 +63,6 @@ const translations = {
         skill4: "LaTeX",
         skill5: "Sample Tag",
         backBtn: "Back to List",
-        footerSub: "Exploring the universe, recording thoughts",
         footerNavTitle: "Navigation",
         footerLinkTitle: "Links"
     }
