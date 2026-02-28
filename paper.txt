@@ -1,0 +1,100 @@
+文章1：
+
+<!DOCTYPE html>
+<html>
+<body>
+  <p><b>
+    <a href="https://inspirehep.net/literature/2852199">
+      Gravitational waves and cosmic boundary
+    </a>
+  </b></p>
+  
+    <p><a href="https://inspirehep.net/authors/1917773">Changfu Shi</a>, <a href="https://inspirehep.net/authors/2862861">Xinyi Che</a>, <a href="https://inspirehep.net/authors/1940381">Zeyu Huang</a>, <a href="https://inspirehep.net/authors/1471897">Yi-Ming Hu</a>, <a href="https://inspirehep.net/authors/1042302">Jianwei Mei</a></p>
+  
+  <p>
+      e-Print:
+          <a href="https://arxiv.org/abs/2411.17177">
+      2411.17177
+    </a>[gr-qc]</p>
+  <p>
+        DOI:
+        <a href="https://doi.org/10.1103/PhysRevD.111.023022">
+      10.1103/PhysRevD.111.023022
+    </a>(publication)
+      </p>
+  <p>
+    Published in:<span>
+      Phys.Rev.D 111 (2025) 2,
+      023022</span></p>
+  <br>
+</body>
+</html>
+
+@article{Shi:2024ula,
+    author = "Shi, Changfu and Che, Xinyi and Huang, Zeyu and Hu, Yi-Ming and Mei, Jianwei",
+    title = "{Gravitational waves and cosmic boundary}",
+    eprint = "2411.17177",
+    archivePrefix = "arXiv",
+    primaryClass = "gr-qc",
+    doi = "10.1103/PhysRevD.111.023022",
+    journal = "Phys. Rev. D",
+    volume = "111",
+    number = "2",
+    pages = "023022",
+    year = "2025"
+}
+
+文章2：
+
+<!DOCTYPE html>
+<html>
+<body>
+  <p><b>
+    <a href="https://inspirehep.net/literature/3096178">
+      Constraining the dynamical Chern-Simons gravity with future gravitational wave detectors
+    </a>
+  </b></p>
+  
+    <p><a href="https://inspirehep.net/authors/2862861">Xinyi Che</a> (<a href="https://inspirehep.net/institutions/1421894">Zhongshan U., Zhuhai</a>), <a href="https://inspirehep.net/authors/2679858">Xiangyu Lyu</a> (<a href="https://inspirehep.net/institutions/1421894">Zhongshan U., Zhuhai</a>), <a href="https://inspirehep.net/authors/1917773">Changfu Shi</a> (<a href="https://inspirehep.net/institutions/1421894">Zhongshan U., Zhuhai</a>)</p>
+  
+  <p>
+      e-Print:
+          <a href="https://arxiv.org/abs/2512.22762">
+      2512.22762
+    </a>[gr-qc]</p>
+  
+  
+  <br>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<body>
+  <p><b>
+    <a href="https://inspirehep.net/literature/3096178">
+      Constraining the dynamical Chern-Simons gravity with future gravitational wave detectors
+    </a>
+  </b></p>
+  
+    <p><a href="https://inspirehep.net/authors/2862861">Xinyi Che</a> (<a href="https://inspirehep.net/institutions/1421894">Zhongshan U., Zhuhai</a>), <a href="https://inspirehep.net/authors/2679858">Xiangyu Lyu</a> (<a href="https://inspirehep.net/institutions/1421894">Zhongshan U., Zhuhai</a>), <a href="https://inspirehep.net/authors/1917773">Changfu Shi</a> (<a href="https://inspirehep.net/institutions/1421894">Zhongshan U., Zhuhai</a>)</p>
+  
+  <p>
+      e-Print:
+          <a href="https://arxiv.org/abs/2512.22762">
+      2512.22762
+    </a>[gr-qc]</p>
+  
+  
+  <br>
+</body>
+</html>
+
+@article{Che:2025sor,
+    author = "Che, Xinyi and Lyu, Xiangyu and Shi, Changfu",
+    title = "{Constraining the dynamical Chern-Simons gravity with future gravitational wave detectors}",
+    eprint = "2512.22762",
+    archivePrefix = "arXiv",
+    primaryClass = "gr-qc",
+    month = "12",
+    year = "2025"
+}

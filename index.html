@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog - 技术博客</title>
-    <link rel="stylesheet" href="style.css">
+    <title>车昕益 - 个人网站</title>
+    <link rel="stylesheet" href="style.css?v=1.2">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,19 +12,28 @@
     <header class="header">
         <nav class="nav">
             <div class="nav-brand">
-                <a href="#home" class="logo">My Blog</a>
+                <a href="#home" class="logo" data-i18n="navLogo">车昕益</a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">首页</a></li>
-                <li><a href="#blog" class="nav-link">博客</a></li>
-                <li><a href="#projects" class="nav-link">项目</a></li>
-                <li><a href="#about" class="nav-link">关于</a></li>
-                <li><a href="#contact" class="nav-link">联系</a></li>
-            </ul>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            
+            <div class="nav-right">
+                <div class="lang-switch">
+                    <span id="lang-zh" class="lang-btn active">中文</span>
+                    <span class="lang-divider">/</span>
+                    <span id="lang-en" class="lang-btn">EN</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link" data-i18n="navHome">首页</a></li>
+                    <li><a href="#experience" class="nav-link" data-i18n="navExperience">学术经历</a></li>
+                    <li><a href="#research" class="nav-link" data-i18n="navResearch">学术研究</a></li>
+                    <li><a href="#blog" class="nav-link" data-i18n="navBlog">最新动态</a></li>
+                    <li><a href="#projects" class="nav-link" data-i18n="navProjects">项目与开发</a></li>
+                    <li><a href="#about" class="nav-link" data-i18n="navAbout">关于我</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
     </header>
@@ -33,16 +42,38 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    欢迎来到我的技术博客
-                </h1>
-                <p class="hero-subtitle">
-                    在这里分享编程经验、技术思考和项目实践
-                </p>
+                <h1 class="hero-title" data-i18n="heroTitle">车昕益 (Xinyi Che)</h1>
                 <div class="hero-actions">
-                    <a href="#blog" class="btn btn-primary">查看博客</a>
-                    <a href="#about" class="btn btn-secondary">了解更多</a>
+                    <a href="#research" class="btn btn-primary" data-i18n="heroResearch">学术研究</a>
+                    <a href="#about" class="btn btn-secondary" data-i18n="heroAbout">关于我</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Experience Section -->
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="sectionExperience">学术经历</h2>
+            </div>
+            <div id="experience-list" class="experience-list">
+                <!-- Academic experience will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section research-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="sectionResearch">学术研究</h2>
+            </div>
+            <div id="paper-list" class="papers-list">
+                <!-- Research papers will be dynamically loaded here -->
+            </div>
+            <div class="section-footer">
+                <a href="https://inspirehep.net/authors/2862861?ui-citation-summary=true" target="_blank" class="btn btn-outline" data-i18n="inspireLink">在 INSPIRE 上查看完整记录</a>
             </div>
         </div>
     </section>
@@ -51,14 +82,10 @@
     <section id="blog" class="section blog-section">
         <div class="container">
             <div class="section-header">
-                <h2>最新文章</h2>
-                <p>分享最新的技术思考和经验</p>
+                <h2 data-i18n="sectionBlog">最新动态</h2>
             </div>
             <div id="blog-list" class="blog-grid">
                 <!-- Blog posts will be dynamically loaded here -->
-            </div>
-            <div class="section-footer">
-                <a href="#" class="btn btn-outline">查看所有文章</a>
             </div>
         </div>
     </section>
@@ -67,35 +94,16 @@
     <section id="projects" class="section projects-section">
         <div class="container">
             <div class="section-header">
-                <h2>我的项目</h2>
-                <p>一些正在进行或已完成的技术项目</p>
+                <h2 data-i18n="sectionProjects">项目与开发</h2>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-icon">💻</div>
-                    <h3>个人博客网站</h3>
-                    <p>使用HTML、CSS、JavaScript构建的响应式个人博客平台</p>
-                    <div class="project-tags">
-                        <span class="tag">Web开发</span>
-                        <span class="tag">前端</span>
-                    </div>
-                </div>
-                <div class="project-card">
                     <div class="project-icon">🔧</div>
-                    <h3>工具库开发</h3>
-                    <p>开发实用的前端工具库和组件，提升开发效率</p>
+                    <h3 data-i18n="projectSampleTitle">示例项目名称</h3>
+                    <p data-i18n="projectSampleDesc">这是一个占位示例，旨在展示项目卡片的布局效果。您可以在未来添加实际参与的科研工具、数据处理脚本或开源项目。</p>
                     <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">工具库</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">📊</div>
-                    <h3>数据可视化</h3>
-                    <p>使用现代技术实现数据可视化和分析工具</p>
-                    <div class="project-tags">
-                        <span class="tag">数据可视化</span>
-                        <span class="tag">图表</span>
+                        <span class="tag" data-i18n="tagPython">Python</span>
+                        <span class="tag" data-i18n="tagTool">科研工具</span>
                     </div>
                 </div>
             </div>
@@ -108,50 +116,28 @@
             <div class="about-content">
                 <div class="about-text">
                     <div class="section-header">
-                        <h2>关于我</h2>
-                        <p>热情的技术爱好者和终身学习者</p>
+                        <h2 data-i18n="sectionAbout">关于我</h2>
                     </div>
                     <div class="about-details">
-                        <p>我是一名对技术充满热情的前端开发者，喜欢探索新的编程语言和技术框架。</p>
-                        <p>在日常工作中，我专注于创建优雅、高效的Web应用程序，同时也在持续学习和分享。</p>
+                        <p data-i18n="aboutP1">这是一个关于我的示例介绍。您可以在此简要描述您的研究兴趣、学术背景以及在科研之外的爱好。这部分旨在让访问者对您有一个更全面的初步了解。</p>
+                        <p data-i18n="aboutP2">示例占位文字：目前我专注于引力物理领域的探索，并持续学习相关的数据分析与数值计算技术。我热爱跨学科的交流，并致力于将复杂的物理概念以更直观的方式呈现出来。</p>
+                        <p><strong>Email:</strong> <a href="mailto:chexy@mail2.sysu.edu.cn">chexy@mail2.sysu.edu.cn</a></p>
                         <div class="skills">
-                            <h4>技术栈</h4>
+                            <h4 data-i18n="skillsTitle">示例技能与工具</h4>
                             <div class="skill-tags">
-                                <span class="skill-tag">HTML/CSS</span>
-                                <span class="skill-tag">JavaScript</span>
-                                <span class="skill-tag">React</span>
-                                <span class="skill-tag">Node.js</span>
-                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag" data-i18n="skill1">物理建模</span>
+                                <span class="skill-tag" data-i18n="skill2">数值模拟</span>
+                                <span class="skill-tag" data-i18n="skill3">数据处理</span>
+                                <span class="skill-tag" data-i18n="skill4">LaTeX</span>
+                                <span class="skill-tag" data-i18n="skill5">示例标签</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <div class="avatar">👨‍💻</div>
+                    <div class="avatar">🔭</div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>联系我</h2>
-                <p>有什么问题或想法？欢迎联系交流</p>
-            </div>
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" placeholder="你的名字" required class="form-input">
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="你的邮箱" required class="form-input">
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="你的消息" rows="5" required class="form-textarea"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">发送消息</button>
-            </form>
         </div>
     </section>
 
@@ -162,7 +148,7 @@
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                 </svg>
-                返回博客
+                <span data-i18n="backBtn">返回文章列表</span>
             </button>
             <article class="blog-article">
                 <header class="blog-header">
@@ -184,30 +170,32 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="#home" class="logo">My Blog</a>
-                    <p>分享技术与思考</p>
+                    <a href="#home" class="logo" data-i18n="navLogo">车昕益</a>
+                    <p data-i18n="footerSub">探索宇宙，记录思考</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
-                        <h4>导航</h4>
+                        <h4 data-i18n="footerNavTitle">导航</h4>
                         <ul>
-                            <li><a href="#home">首页</a></li>
-                            <li><a href="#blog">博客</a></li>
-                            <li><a href="#projects">项目</a></li>
+                            <li><a href="#home" data-i18n="navHome">首页</a></li>
+                            <li><a href="#experience" data-i18n="navExperience">学术经历</a></li>
+                            <li><a href="#research" data-i18n="navResearch">学术研究</a></li>
+                            <li><a href="#blog" data-i18n="navBlog">最新动态</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
-                        <h4>链接</h4>
+                        <h4 data-i18n="footerLinkTitle">链接</h4>
                         <ul>
-                            <li><a href="#about">关于</a></li>
-                            <li><a href="#contact">联系</a></li>
-                            <li><a href="#">GitHub</a></li>
+                            <li><a href="#about" data-i18n="navAbout">关于我</a></li>
+                            <li><a href="mailto:chexy@mail2.sysu.edu.cn">Email</a></li>
+                            <li><a href="https://github.com/chexy-cn">GitHub</a></li>
+                            <li><a href="https://www.facebook.com/share/1JJ56imUnW/" target="_blank">Facebook</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 My Blog. 保留所有权利.</p>
+                <p>&copy; 2025 <span data-i18n="navLogo">车昕益</span>. All rights reserved.</p>
             </div>
         </div>
     </footer>

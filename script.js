@@ -1,145 +1,219 @@
-// 博客数据
-const blogPosts = [
+// 国际化配置
+const translations = {
+    zh: {
+        navLogo: "车昕益",
+        navHome: "首页",
+        navExperience: "学术经历",
+        navResearch: "学术研究",
+        navBlog: "最新动态",
+        navProjects: "项目与开发",
+        navAbout: "关于我",
+        heroTitle: "车昕益 (Xinyi Che)",
+        heroResearch: "学术研究",
+        heroAbout: "关于我",
+        sectionExperience: "学术经历",
+        sectionResearch: "学术研究",
+        sectionBlog: "最新动态",
+        sectionProjects: "项目与开发",
+        sectionAbout: "关于我",
+        inspireLink: "在 INSPIRE 上查看完整记录",
+        projectSampleTitle: "示例项目名称",
+        projectSampleDesc: "这是一个占位示例，旨在展示项目卡片的布局效果。您可以在未来添加实际参与的科研工具、数据处理脚本或开源项目。",
+        tagPython: "Python",
+        tagTool: "科研工具",
+        aboutP1: "这是一个关于我的示例介绍。您可以在此简要描述您的研究兴趣、学术背景以及在科研之外的爱好。这部分旨在让访问者对您有一个更全面的初步了解。",
+        aboutP2: "示例占位文字：目前我专注于引力物理领域的探索，并持续学习相关的数据分析与数值计算技术。我热爱跨学科的交流，并致力于将复杂的物理概念以更直观的方式呈现出来。",
+        skillsTitle: "示例技能与工具",
+        skill1: "物理建模",
+        skill2: "数值模拟",
+        skill3: "数据处理",
+        skill4: "LaTeX",
+        skill5: "示例标签",
+        backBtn: "返回文章列表",
+        footerSub: "探索宇宙，记录思考",
+        footerNavTitle: "导航",
+        footerLinkTitle: "链接"
+    },
+    en: {
+        navLogo: "Xinyi Che",
+        navHome: "Home",
+        navExperience: "Experience",
+        navResearch: "Research",
+        navBlog: "News",
+        navProjects: "Projects",
+        navAbout: "About",
+        heroTitle: "Xinyi Che",
+        heroResearch: "Research",
+        heroAbout: "About Me",
+        sectionExperience: "Academic Experience",
+        sectionResearch: "Research",
+        sectionBlog: "Latest News",
+        sectionProjects: "Projects & Development",
+        sectionAbout: "About Me",
+        inspireLink: "View full records on INSPIRE",
+        projectSampleTitle: "Sample Project Name",
+        projectSampleDesc: "This is a placeholder example to demonstrate the project card layout. You can add actual research tools, data scripts, or open-source projects in the future.",
+        tagPython: "Python",
+        tagTool: "Research Tool",
+        aboutP1: "This is a sample introduction about me. You can briefly describe your research interests, academic background, and hobbies outside of research here. This section aims to provide visitors with a more comprehensive first impression.",
+        aboutP2: "Sample placeholder: Currently, I focus on exploring gravitational physics and continuously learn related data analysis and numerical calculation techniques. I enjoy interdisciplinary exchange and aim to present complex physical concepts more intuitively.",
+        skillsTitle: "Sample Skills & Tools",
+        skill1: "Physical Modeling",
+        skill2: "Numerical Simulation",
+        skill3: "Data Processing",
+        skill4: "LaTeX",
+        skill5: "Sample Tag",
+        backBtn: "Back to List",
+        footerSub: "Exploring the universe, recording thoughts",
+        footerNavTitle: "Navigation",
+        footerLinkTitle: "Links"
+    }
+};
+
+// 动态内容双语数据
+const academicExperience = {
+    zh: [
+        {
+            period: "2025 - 至今",
+            institution: "中山大学物理与天文学院天琴中心",
+            position: "理论组，博士在读",
+            description: "专注于引力波天文学及引力理论研究"
+        },
+        {
+            period: "2021 - 2025",
+            institution: "中山大学物理与天文学院",
+            position: "物理学，本科",
+            description: "完成本科阶段物理学专业课程学习<br>完成大创项目：利用引力波探测环双白矮星的系外行星<br>完成大创项目：神经网络无波前自适应光学<br>完成毕业设计：利用引力波限制dCS理论"
+        }
+    ],
+    en: [
+        {
+            period: "2025 - Present",
+            institution: "TianQin Research Center, School of Physics and Astronomy, Sun Yat-sen University",
+            position: "PhD Student, Theory Group",
+            description: "Focusing on gravitational wave astronomy and gravitational theory research"
+        },
+        {
+            period: "2021 - 2025",
+            institution: "School of Physics and Astronomy, Sun Yat-sen University",
+            position: "B.Sc. in Physics",
+            description: "Completed undergraduate physics curriculum<br>Completed Undergraduate Innovation Project: Detecting Exoplanets Around Circumbinary White Dwarfs with Gravitational Waves<br>Completed Undergraduate Innovation Project: Wavefront-less Adaptive Optics Based on Neural Networks<br>Completed Graduation Thesis: Constraining dCS Theory Using Gravitational Waves"
+        }
+    ]
+};
+
+const blogPosts = {
+    zh: [
+        {
+            id: 1,
+            title: "这是一篇示例动态标题",
+            excerpt: "这仅仅是一个用于演示网页排版和视觉效果的示例。您可以在此发布学术随笔、会议纪闻或研究进展。",
+            content: `<h2>示例内容</h2><p>这是一个示例页面。在实际使用中，您可以通过修改 script.js 中的 blogPosts 数组来添加真实的动态内容。</p>`,
+            date: "2026-02-28",
+            category: "示例",
+            readTime: "1 min"
+        }
+    ],
+    en: [
+        {
+            id: 1,
+            title: "Sample News Title",
+            excerpt: "This is just a sample for demonstrating the layout and visual effects. You can publish academic essays, conference notes, or research progress here.",
+            content: `<h2>Sample Content</h2><p>This is a sample page. In actual use, you can add real news content by modifying the blogPosts array in script.js.</p>`,
+            date: "2026-02-28",
+            category: "Sample",
+            readTime: "1 min"
+        }
+    ]
+};
+
+const researchPapers = [
     {
         id: 1,
-        title: "现代Web开发的最佳实践",
-        excerpt: "探讨现代前端开发中的最佳实践和工具链配置，提高开发效率和代码质量。",
-        content: `
-            <h2>现代Web开发的最佳实践</h2>
-            <p>随着Web技术的快速发展，前端开发已经变得异常复杂。我们需要遵循一些最佳实践来保持代码的可维护性和可扩展性。</p>
-
-            <h3>模块化开发</h3>
-            <p>使用ES6模块或现代模块系统将代码拆分成小的、可重用的模块。这不仅提高代码的可读性，也使得测试和维护变得更加容易。</p>
-
-            <h3>组件化思维</h3>
-            <p>将UI拆分成独立的组件，每个组件负责特定的功能。React、Vue等现代框架都基于这种思想。</p>
-
-            <h3>性能优化</h3>
-            <ul>
-                <li>代码分割和懒加载</li>
-                <li>图片和资源的优化</li>
-                <li>使用CDN加速</li>
-                <li>缓存策略的合理配置</li>
-            </ul>
-
-            <h3>代码质量</h3>
-            <p>使用ESLint、Prettier等工具保持代码风格的一致性，并通过自动化测试确保代码质量。</p>
-        `,
-        date: "2024-12-01",
-        category: "前端开发",
-        readTime: "5 min"
+        title: "Constraining the dynamical Chern-Simons gravity with future gravitational wave detectors",
+        authors: ["Xinyi Che", "Xiangyu Lyu", "Changfu Shi"],
+        journal: "e-Print: 2512.22762 [gr-qc]",
+        date: "2025-12",
+        doi: "",
+        arxiv: "2512.22762",
+        inspireUrl: "https://inspirehep.net/literature/3096178"
     },
     {
         id: 2,
-        title: "响应式设计的实现原理",
-        excerpt: "深入解析响应式设计的核心技术，包括媒体查询、弹性布局和移动优先策略。",
-        content: `
-            <h2>响应式设计的实现原理</h2>
-            <p>响应式设计已成为现代Web开发的标配技术，它让网站能够优雅地适配各种设备尺寸。</p>
-
-            <h3>媒体查询（Media Queries）</h3>
-            <p>媒体查询是响应式设计的核心，它允许我们根据设备特性（如屏幕宽度、分辨率等）应用不同的CSS样式。</p>
-
-            <h3>弹性网格系统</h3>
-            <p>使用百分比、flexbox或grid布局创建灵活的网格系统，使页面元素能够根据容器尺寸自动调整。</p>
-
-            <h3>移动优先策略</h3>
-            <p>从移动设备开始设计，然后逐步增强到大屏幕设备。这种方法确保基础体验在所有设备上都表现良好。</p>
-
-            <h3>实用技巧</h3>
-            <ul>
-                <li>使用相对单位（rem, em）</li>
-                <li>合理设置断点</li>
-                <li>优化图像和媒体资源</li>
-                <li>考虑触摸交互</li>
-            </ul>
-        `,
-        date: "2024-11-28",
-        category: "CSS",
-        readTime: "4 min"
-    },
-    {
-        id: 3,
-        title: "JavaScript异步编程模式",
-        excerpt: "从回调到async/await，探索JavaScript异步编程的演进和技术选型。",
-        content: `
-            <h2>JavaScript异步编程模式</h2>
-            <p>JavaScript的单线程特性使得异步编程成为处理I/O密集型操作的关键技术。</p>
-
-            <h3>回调函数（Callbacks）</h3>
-            <p>最基础的异步模式，简单但容易导致回调地狱。适用于简单的异步场景。</p>
-
-            <h3>Promise对象</h3>
-            <p>ES6引入的Promise提供了更优雅的异步处理方式，支持链式调用和错误传播。</p>
-
-            <h3>Async/Await</h3>
-            <p>ES8的async/await让异步代码看起来像同步代码，极大地提高了代码的可读性。</p>
-
-            <h3>技术选型建议</h3>
-            <ul>
-                <li>简单场景：回调或Promise</li>
-                <li>复杂流程：async/await</li>
-                <li>并发处理：Promise.all/race</li>
-                <li>错误处理：try/catch + Promise.catch</li>
-            </ul>
-        `,
-        date: "2024-11-25",
-        category: "JavaScript",
-        readTime: "6 min"
-    },
-    {
-        id: 4,
-        title: "构建工具的选择与配置",
-        excerpt: "对比Webpack、Vite、Parcel等主流构建工具的特点和使用场景。",
-        content: `
-            <h2>构建工具的选择与配置</h2>
-            <p>现代前端项目离不开构建工具，选择合适的工具能够显著提升开发效率。</p>
-
-            <h3>Webpack</h3>
-            <p>功能最全面的构建工具，插件生态丰富，适合大型复杂项目。但配置相对复杂，构建速度较慢。</p>
-
-            <h3>Vite</h3>
-            <p>基于ESM的现代化构建工具，开发服务器启动极快，内置TypeScript、JSX等支持。</p>
-
-            <h3>Parcel</h3>
-            <p>零配置的构建工具，开箱即用，适合快速原型开发和小型项目。</p>
-
-            <h3>选择建议</h3>
-            <ul>
-                <li>大型企业项目：Webpack</li>
-                <li>现代框架项目：Vite</li>
-                <li>快速开发：Parcel</li>
-                <li>特定需求：Rollup（库开发）</li>
-            </ul>
-        `,
-        date: "2024-11-22",
-        category: "工具链",
-        readTime: "5 min"
+        title: "Gravitational waves and cosmic boundary",
+        authors: ["Changfu Shi", "Xinyi Che", "Zeyu Huang", "Yi-Ming Hu", "Jianwei Mei"],
+        journal: "Phys. Rev. D 111 (2025) 023022",
+        date: "2025-01",
+        doi: "10.1103/PhysRevD.111.023022",
+        arxiv: "2411.17177",
+        inspireUrl: "https://inspirehep.net/literature/2852199"
     }
 ];
 
 // 全局状态
+let currentLang = 'zh';
 let currentView = 'home';
 let currentBlogPost = null;
 let isMobileMenuOpen = false;
 
-// 平滑滚动到指定区域
+// 切换语言
+function setLanguage(lang) {
+    currentLang = lang;
+    
+    // 更新按钮状态
+    document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    
+    // 更新静态文本
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+    
+    // 重新渲染动态列表
+    showExperienceList();
+    showPaperList();
+    showBlogList();
+}
+
+// 平滑滚动
 function scrollToSection(sectionId) {
     const element = document.getElementById(sectionId);
     if (element) {
-        element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+}
+
+// 显示学术经历
+function showExperienceList() {
+    const experienceList = document.getElementById('experience-list');
+    if (!experienceList) return;
+    experienceList.innerHTML = '';
+
+    academicExperience[currentLang].forEach(exp => {
+        const expItem = document.createElement('div');
+        expItem.className = 'experience-item';
+        expItem.innerHTML = `
+            <div class="exp-period">${exp.period}</div>
+            <div class="exp-content">
+                <h3>${exp.institution}</h3>
+                <p class="exp-position">${exp.position}</p>
+                <p class="exp-desc">${exp.description}</p>
+            </div>
+        `;
+        experienceList.appendChild(expItem);
+    });
 }
 
 // 显示博客列表
 function showBlogList() {
     const blogList = document.getElementById('blog-list');
+    if (!blogList) return;
     blogList.innerHTML = '';
 
-    blogPosts.forEach(post => {
+    blogPosts[currentLang].forEach(post => {
         const blogCard = document.createElement('div');
         blogCard.className = 'blog-card';
         blogCard.setAttribute('data-id', post.id);
@@ -154,191 +228,142 @@ function showBlogList() {
             </div>
         `;
 
-        blogCard.addEventListener('click', () => {
-            showBlogDetail(post.id);
-        });
-
+        blogCard.addEventListener('click', () => showBlogDetail(post.id));
         blogList.appendChild(blogCard);
+    });
+}
+
+// 显示论文列表
+function showPaperList() {
+    const paperList = document.getElementById('paper-list');
+    if (!paperList) return;
+    paperList.innerHTML = '';
+
+    researchPapers.forEach(paper => {
+        const paperCard = document.createElement('div');
+        paperCard.className = 'paper-card';
+        const processedAuthors = paper.authors.map(author => 
+            author === "Xinyi Che" ? `<strong>${author}</strong>` : author
+        ).join(', ');
+
+        paperCard.innerHTML = `
+            <h3 class="paper-title">${paper.title}</h3>
+            <div class="paper-authors">${processedAuthors}</div>
+            <div class="paper-footer">
+                <div class="paper-meta">
+                    <span>${paper.journal}</span>
+                    <span>${paper.date}</span>
+                </div>
+                <div class="paper-links">
+                    ${paper.arxiv ? `<a href="https://arxiv.org/abs/${paper.arxiv}" target="_blank" class="paper-link">arXiv</a>` : ''}
+                    ${paper.doi ? `<a href="https://doi.org/${paper.doi}" target="_blank" class="paper-link">DOI</a>` : ''}
+                    <a href="${paper.inspireUrl}" target="_blank" class="paper-link">INSPIRE</a>
+                </div>
+            </div>
+        `;
+        paperList.appendChild(paperCard);
     });
 }
 
 // 显示博客详情
 function showBlogDetail(postId) {
-    const post = blogPosts.find(p => p.id === postId);
+    const post = blogPosts[currentLang].find(p => p.id === postId);
     if (!post) return;
 
     currentView = 'blog-detail';
     currentBlogPost = post;
 
-    // 隐藏所有主要区块
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.style.display = 'none';
-    });
-
-    const footer = document.querySelector('.footer');
-    footer.style.display = 'none';
-
-    // 显示博客详情
+    document.querySelectorAll('section').forEach(s => s.style.display = 'none');
+    document.querySelector('.footer').style.display = 'none';
     const blogDetail = document.getElementById('blog-detail');
     blogDetail.style.display = 'block';
 
-    // 填充内容
     document.getElementById('blog-title').textContent = post.title;
     document.getElementById('blog-date').textContent = post.date;
     document.getElementById('blog-category').textContent = post.category;
     document.getElementById('blog-content').innerHTML = post.content;
 
-    // 滚动到顶部
     window.scrollTo(0, 0);
-
-    // 更新body滚动状态
     document.body.style.overflow = 'hidden';
 }
 
-// 返回博客列表
 function backToBlog() {
     currentView = 'blog';
     currentBlogPost = null;
-
-    // 隐藏博客详情
     document.getElementById('blog-detail').style.display = 'none';
-
-    // 显示所有区块
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.style.display = 'block';
-    });
-
-    const footer = document.querySelector('.footer');
-    footer.style.display = 'block';
-
-    // 恢复body滚动
+    document.querySelectorAll('section').forEach(s => s.style.display = 'block');
+    document.querySelector('.footer').style.display = 'block';
     document.body.style.overflow = '';
-
-    // 滚动到博客区域
     scrollToSection('blog');
 }
 
-// 处理导航点击
 function handleNavigation(sectionId) {
-    if (sectionId === 'blog') {
-        if (currentView === 'blog-detail') {
-            backToBlog();
-        } else {
-            // 显示博客列表
-            currentView = 'blog';
-
-            // 确保所有区块显示
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.style.display = 'block';
-            });
-
-            document.getElementById('blog-detail').style.display = 'none';
-            document.querySelector('.footer').style.display = 'block';
-
-            showBlogList();
-            scrollToSection('blog');
-        }
+    if (sectionId === 'blog' && currentView === 'blog-detail') {
+        backToBlog();
     } else {
-        // 其他页面导航
         currentView = sectionId;
-
-        // 确保显示所有区块，隐藏博客详情
-        const sections = document.querySelectorAll('section');
-        sections.forEach(section => {
-            section.style.display = 'block';
-        });
-
+        document.querySelectorAll('section').forEach(s => s.style.display = 'block');
         document.getElementById('blog-detail').style.display = 'none';
         document.querySelector('.footer').style.display = 'block';
-
-        // 恢复body滚动
         document.body.style.overflow = '';
-
+        
+        if (sectionId === 'research') showPaperList();
+        if (sectionId === 'experience') showExperienceList();
+        
         scrollToSection(sectionId);
     }
-
-    // 移动端关闭菜单
-    if (isMobileMenuOpen) {
-        toggleMobileMenu();
-    }
+    if (isMobileMenuOpen) toggleMobileMenu();
 }
 
-// 切换移动端菜单
 function toggleMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
     const navToggle = document.querySelector('.nav-toggle');
-
     isMobileMenuOpen = !isMobileMenuOpen;
-
     if (isMobileMenuOpen) {
         navMenu.style.display = 'flex';
-        navToggle.querySelectorAll('span').forEach((span, index) => {
-            if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
-            if (index === 1) span.style.opacity = '0';
-            if (index === 2) span.style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        navToggle.querySelectorAll('span').forEach((s, i) => {
+            if (i === 0) s.style.transform = 'rotate(45deg) translate(5px, 5px)';
+            if (i === 1) s.style.opacity = '0';
+            if (i === 2) s.style.transform = 'rotate(-45deg) translate(7px, -6px)';
         });
     } else {
         navMenu.style.display = 'none';
-        navToggle.querySelectorAll('span').forEach(span => {
-            span.style.transform = '';
-            span.style.opacity = '';
+        navToggle.querySelectorAll('span').forEach(s => {
+            s.style.transform = ''; s.style.opacity = '';
         });
     }
 }
 
-// 表单提交处理
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    // 语言切换监听
+    document.getElementById('lang-zh').addEventListener('click', () => setLanguage('zh'));
+    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
 
-    // 模拟表单提交
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-
-    console.log('表单数据:', data);
-
-    // 显示成功消息
-    alert('感谢你的消息！我会尽快回复。');
-    this.reset();
-});
-
-// 页面加载完成后的初始化
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('网站加载完成！');
-
-    // 初始化博客列表
+    showExperienceList();
+    showPaperList();
     showBlogList();
 
-    // 桌面端导航链接点击事件
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            handleNavigation(targetId);
+            handleNavigation(link.getAttribute('href').substring(1));
         });
     });
 
-    // 移动端菜单切换
     document.querySelector('.nav-toggle').addEventListener('click', toggleMobileMenu);
-
-    // 返回按钮事件
     document.getElementById('back-to-blog').addEventListener('click', backToBlog);
 
-    // 首页按钮事件
     document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            if (this.getAttribute('href')?.startsWith('#')) {
+        const href = btn.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                handleNavigation(targetId);
-            }
-        });
+                handleNavigation(href.substring(1));
+            });
+        }
     });
 
-    // 监听窗口大小变化，调整移动端菜单
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', () => {
         const navMenu = document.querySelector('.nav-menu');
         if (window.innerWidth > 768) {
             navMenu.style.display = 'flex';
@@ -348,16 +373,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 初始化页面状态
     handleNavigation('home');
 });
 
-// 添加滚动时头部阴影效果
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
-    if (window.scrollY > 10) {
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    } else {
-        header.style.boxShadow = 'none';
+    if (header) {
+        header.style.boxShadow = window.scrollY > 10 ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
     }
 });
