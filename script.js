@@ -363,9 +363,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', () => {
         const navMenu = document.querySelector('.nav-menu');
+        const navToggle = document.querySelector('.nav-toggle');
         if (window.innerWidth > 768) {
             navMenu.style.display = 'flex';
             isMobileMenuOpen = false;
+            navToggle.querySelectorAll('span').forEach(s => {
+                s.style.transform = '';
+                s.style.opacity = '';
+            });
         } else if (!isMobileMenuOpen) {
             navMenu.style.display = 'none';
         }
