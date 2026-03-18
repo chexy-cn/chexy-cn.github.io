@@ -81,7 +81,7 @@ const academicExperience = {
             period: "2021 - 2025",
             institution: "中山大学物理与天文学院",
             position: "物理学，本科",
-            description: "完成本科阶段物理学专业课程学习<br>完成大创项目：利用引力波探测环双白矮星的系外行星<br>完成大创项目：神经网络无波前自适应光学<br>完成毕业设计：利用引力波限制dCS理论"
+            description: "完成本科阶段物理学专业课程学习"
         }
     ],
     en: [
@@ -95,7 +95,7 @@ const academicExperience = {
             period: "2021 - 2025",
             institution: "School of Physics and Astronomy, Sun Yat-sen University",
             position: "B.Sc. in Physics",
-            description: "Completed undergraduate physics curriculum<br>Completed Undergraduate Innovation Project: Detecting Exoplanets Around Circumbinary White Dwarfs with Gravitational Waves<br>Completed Undergraduate Innovation Project: Wavefront-less Adaptive Optics Based on Neural Networks<br>Completed Graduation Thesis: Constraining dCS Theory Using Gravitational Waves"
+            description: "Completed undergraduate physics curriculum"
         }
     ]
 };
@@ -104,22 +104,22 @@ const blogPosts = {
     zh: [
         {
             id: 1,
-            title: "这是一篇示例动态标题",
-            excerpt: "这仅仅是一个用于演示网页排版和视觉效果的示例。您可以在此发布学术随笔、会议纪闻或研究进展。",
-            content: `<h2>示例内容</h2><p>这是一个示例页面。在实际使用中，您可以通过修改 script.js 中的 blogPosts 数组来添加真实的动态内容。</p>`,
-            date: "2026-02-28",
-            category: "示例",
+            title: "本科毕业",
+            excerpt: "本科阶段完成两项大创项目及毕业设计。",
+            content: `<h2>本科毕业</h2><p>完成大创项目：利用引力波探测环双白矮星的系外行星</p><p>完成大创项目：神经网络无波前自适应光学</p><p>完成毕业设计：利用引力波限制dCS理论</p>`,
+            date: "2026-03-18",
+            category: "学术经历",
             readTime: "1 min"
         }
     ],
     en: [
         {
             id: 1,
-            title: "Sample News Title",
-            excerpt: "This is just a sample for demonstrating the layout and visual effects. You can publish academic essays, conference notes, or research progress here.",
-            content: `<h2>Sample Content</h2><p>This is a sample page. In actual use, you can add real news content by modifying the blogPosts array in script.js.</p>`,
-            date: "2026-02-28",
-            category: "Sample",
+            title: "Undergraduate Graduation",
+            excerpt: "Completed two undergraduate innovation projects and a graduation thesis.",
+            content: `<h2>Undergraduate Graduation</h2><p>Completed Undergraduate Innovation Project: Detecting Exoplanets Around Circumbinary White Dwarfs with Gravitational Waves</p><p>Completed Undergraduate Innovation Project: Wavefront-less Adaptive Optics Based on Neural Networks</p><p>Completed Graduation Thesis: Constraining dCS Theory Using Gravitational Waves</p>`,
+            date: "2026-03-18",
+            category: "Academic Milestone",
             readTime: "1 min"
         }
     ]
@@ -154,6 +154,14 @@ let currentView = 'home';
 let currentBlogPost = null;
 let isMobileMenuOpen = false;
 let tickingScroll = false;
+
+function detectPreferredLanguage() {
+    const preferred = Array.isArray(navigator.languages) && navigator.languages.length > 0
+        ? navigator.languages[0]
+        : navigator.language;
+    if (!preferred) return 'zh';
+    return preferred.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+}
 
 // DOM 缓存，避免重复查询
 const dom = {};
@@ -350,9 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.langZh.addEventListener('click', () => setLanguage('zh'));
     dom.langEn.addEventListener('click', () => setLanguage('en'));
 
-    showExperienceList();
-    showPaperList();
-    showBlogList();
+    setLanguage(detectPreferredLanguage());
 
     dom.navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
