@@ -153,17 +153,51 @@ let currentLang = 'zh';
 let currentView = 'home';
 let currentBlogPost = null;
 let isMobileMenuOpen = false;
+let tickingScroll = false;
+
+// DOM 缓存，避免重复查询
+const dom = {};
+
+function initDomReferences() {
+    dom.langZh = document.getElementById('lang-zh');
+    dom.langEn = document.getElementById('lang-en');
+    dom.i18nElements = document.querySelectorAll('[data-i18n]');
+    dom.sections = document.querySelectorAll('section');
+    dom.footer = document.querySelector('.footer');
+    dom.blogDetail = document.getElementById('blog-detail');
+    dom.blogTitle = document.getElementById('blog-title');
+    dom.blogDate = document.getElementById('blog-date');
+    dom.blogCategory = document.getElementById('blog-category');
+    dom.blogContent = document.getElementById('blog-content');
+    dom.experienceList = document.getElementById('experience-list');
+    dom.paperList = document.getElementById('paper-list');
+    dom.blogList = document.getElementById('blog-list');
+    dom.navMenu = document.querySelector('.nav-menu');
+    dom.navToggle = document.querySelector('.nav-toggle');
+    dom.navLinks = document.querySelectorAll('.nav-link');
+    dom.actionButtons = document.querySelectorAll('.btn');
+    dom.header = document.querySelector('.header');
+    dom.backToBlogBtn = document.getElementById('back-to-blog');
+}
+
+function setMainPageVisibility(visible) {
+    const display = visible ? 'block' : 'none';
+    dom.sections.forEach(section => {
+        section.style.display = display;
+    });
+    dom.footer.style.display = display;
+}
 
 // 切换语言
 function setLanguage(lang) {
     currentLang = lang;
     
     // 更新按钮状态
-    document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
-    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    dom.langZh.classList.toggle('active', lang === 'zh');
+    dom.langEn.classList.toggle('active', lang === 'en');
     
     // 更新静态文本
-    document.querySelectorAll('[data-i18n]').forEach(el => {
+    dom.i18nElements.forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang][key]) {
             el.innerHTML = translations[lang][key];
@@ -186,37 +220,26 @@ function scrollToSection(sectionId) {
 
 // 显示学术经历
 function showExperienceList() {
-    const experienceList = document.getElementById('experience-list');
-    if (!experienceList) return;
-    experienceList.innerHTML = '';
+    if (!dom.experienceList) return;
 
-    academicExperience[currentLang].forEach(exp => {
-        const expItem = document.createElement('div');
-        expItem.className = 'experience-item';
-        expItem.innerHTML = `
+    dom.experienceList.innerHTML = academicExperience[currentLang].map(exp => `
+        <div class="experience-item">
             <div class="exp-period">${exp.period}</div>
             <div class="exp-content">
                 <h3>${exp.institution}</h3>
                 <p class="exp-position">${exp.position}</p>
                 <p class="exp-desc">${exp.description}</p>
             </div>
-        `;
-        experienceList.appendChild(expItem);
-    });
+        </div>
+    `).join('');
 }
 
 // 显示博客列表
 function showBlogList() {
-    const blogList = document.getElementById('blog-list');
-    if (!blogList) return;
-    blogList.innerHTML = '';
+    if (!dom.blogList) return;
 
-    blogPosts[currentLang].forEach(post => {
-        const blogCard = document.createElement('div');
-        blogCard.className = 'blog-card';
-        blogCard.setAttribute('data-id', post.id);
-
-        blogCard.innerHTML = `
+    dom.blogList.innerHTML = blogPosts[currentLang].map(post => `
+        <div class="blog-card" data-id="${post.id}">
             <h3>${post.title}</h3>
             <p class="excerpt">${post.excerpt}</p>
             <div class="blog-meta">
@@ -224,27 +247,21 @@ function showBlogList() {
                 <span>${post.category}</span>
                 <span>${post.readTime}</span>
             </div>
-        `;
-
-        blogCard.addEventListener('click', () => showBlogDetail(post.id));
-        blogList.appendChild(blogCard);
-    });
+        </div>
+    `).join('');
 }
 
 // 显示论文列表
 function showPaperList() {
-    const paperList = document.getElementById('paper-list');
-    if (!paperList) return;
-    paperList.innerHTML = '';
+    if (!dom.paperList) return;
 
-    researchPapers.forEach(paper => {
-        const paperCard = document.createElement('div');
-        paperCard.className = 'paper-card';
+    dom.paperList.innerHTML = researchPapers.map(paper => {
         const processedAuthors = paper.authors.map(author => 
             author === "Xinyi Che" ? `<strong>${author}</strong>` : author
         ).join(', ');
 
-        paperCard.innerHTML = `
+        return `
+            <div class="paper-card">
             <h3 class="paper-title">${paper.title}</h3>
             <div class="paper-authors">${processedAuthors}</div>
             <div class="paper-footer">
@@ -258,9 +275,9 @@ function showPaperList() {
                     <a href="${paper.inspireUrl}" target="_blank" class="paper-link">INSPIRE</a>
                 </div>
             </div>
+            </div>
         `;
-        paperList.appendChild(paperCard);
-    });
+    }).join('');
 }
 
 // 显示博客详情
@@ -271,15 +288,13 @@ function showBlogDetail(postId) {
     currentView = 'blog-detail';
     currentBlogPost = post;
 
-    document.querySelectorAll('section').forEach(s => s.style.display = 'none');
-    document.querySelector('.footer').style.display = 'none';
-    const blogDetail = document.getElementById('blog-detail');
-    blogDetail.style.display = 'block';
+    setMainPageVisibility(false);
+    dom.blogDetail.style.display = 'block';
 
-    document.getElementById('blog-title').textContent = post.title;
-    document.getElementById('blog-date').textContent = post.date;
-    document.getElementById('blog-category').textContent = post.category;
-    document.getElementById('blog-content').innerHTML = post.content;
+    dom.blogTitle.textContent = post.title;
+    dom.blogDate.textContent = post.date;
+    dom.blogCategory.textContent = post.category;
+    dom.blogContent.innerHTML = post.content;
 
     window.scrollTo(0, 0);
     document.body.style.overflow = 'hidden';
@@ -288,9 +303,8 @@ function showBlogDetail(postId) {
 function backToBlog() {
     currentView = 'blog';
     currentBlogPost = null;
-    document.getElementById('blog-detail').style.display = 'none';
-    document.querySelectorAll('section').forEach(s => s.style.display = 'block');
-    document.querySelector('.footer').style.display = 'block';
+    dom.blogDetail.style.display = 'none';
+    setMainPageVisibility(true);
     document.body.style.overflow = '';
     scrollToSection('blog');
 }
@@ -300,9 +314,8 @@ function handleNavigation(sectionId) {
         backToBlog();
     } else {
         currentView = sectionId;
-        document.querySelectorAll('section').forEach(s => s.style.display = 'block');
-        document.getElementById('blog-detail').style.display = 'none';
-        document.querySelector('.footer').style.display = 'block';
+        setMainPageVisibility(true);
+        dom.blogDetail.style.display = 'none';
         document.body.style.overflow = '';
         
         if (sectionId === 'research') showPaperList();
@@ -314,44 +327,44 @@ function handleNavigation(sectionId) {
 }
 
 function toggleMobileMenu() {
-    const navMenu = document.querySelector('.nav-menu');
-    const navToggle = document.querySelector('.nav-toggle');
     isMobileMenuOpen = !isMobileMenuOpen;
     if (isMobileMenuOpen) {
-        navMenu.style.display = 'flex';
-        navToggle.querySelectorAll('span').forEach((s, i) => {
+        dom.navMenu.style.display = 'flex';
+        dom.navToggle.querySelectorAll('span').forEach((s, i) => {
             if (i === 0) s.style.transform = 'rotate(45deg) translate(5px, 5px)';
             if (i === 1) s.style.opacity = '0';
             if (i === 2) s.style.transform = 'rotate(-45deg) translate(7px, -6px)';
         });
     } else {
-        navMenu.style.display = 'none';
-        navToggle.querySelectorAll('span').forEach(s => {
+        dom.navMenu.style.display = 'none';
+        dom.navToggle.querySelectorAll('span').forEach(s => {
             s.style.transform = ''; s.style.opacity = '';
         });
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initDomReferences();
+
     // 语言切换监听
-    document.getElementById('lang-zh').addEventListener('click', () => setLanguage('zh'));
-    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+    dom.langZh.addEventListener('click', () => setLanguage('zh'));
+    dom.langEn.addEventListener('click', () => setLanguage('en'));
 
     showExperienceList();
     showPaperList();
     showBlogList();
 
-    document.querySelectorAll('.nav-link').forEach(link => {
+    dom.navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             handleNavigation(link.getAttribute('href').substring(1));
         });
     });
 
-    document.querySelector('.nav-toggle').addEventListener('click', toggleMobileMenu);
-    document.getElementById('back-to-blog').addEventListener('click', backToBlog);
+    dom.navToggle.addEventListener('click', toggleMobileMenu);
+    dom.backToBlogBtn.addEventListener('click', backToBlog);
 
-    document.querySelectorAll('.btn').forEach(btn => {
+    dom.actionButtons.forEach(btn => {
         const href = btn.getAttribute('href');
         if (href && href.startsWith('#')) {
             btn.addEventListener('click', (e) => {
@@ -361,27 +374,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    dom.blogList.addEventListener('click', (e) => {
+        const blogCard = e.target.closest('.blog-card');
+        if (!blogCard || !dom.blogList.contains(blogCard)) return;
+        showBlogDetail(Number(blogCard.dataset.id));
+    });
+
     window.addEventListener('resize', () => {
-        const navMenu = document.querySelector('.nav-menu');
-        const navToggle = document.querySelector('.nav-toggle');
         if (window.innerWidth > 768) {
-            navMenu.style.display = 'flex';
+            dom.navMenu.style.display = 'flex';
             isMobileMenuOpen = false;
-            navToggle.querySelectorAll('span').forEach(s => {
+            dom.navToggle.querySelectorAll('span').forEach(s => {
                 s.style.transform = '';
                 s.style.opacity = '';
             });
         } else if (!isMobileMenuOpen) {
-            navMenu.style.display = 'none';
+            dom.navMenu.style.display = 'none';
         }
-    });
+    }, { passive: true });
 
     handleNavigation('home');
 });
 
 window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    if (header) {
-        header.style.boxShadow = window.scrollY > 10 ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
-    }
-});
+    if (tickingScroll) return;
+    tickingScroll = true;
+
+    requestAnimationFrame(() => {
+        if (dom.header) {
+            dom.header.style.boxShadow = window.scrollY > 10 ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
+        }
+        tickingScroll = false;
+    });
+}, { passive: true });
