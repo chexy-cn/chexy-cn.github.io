@@ -75,13 +75,13 @@ const academicExperience = {
             period: "2025 - 至今",
             institution: "中山大学物理与天文学院天琴中心",
             position: "理论组，博士在读",
-            description: "专注于引力波天文学及引力理论研究"
+            description: "导师：梅健伟，胡一鸣"
         },
         {
             period: "2021 - 2025",
             institution: "中山大学物理与天文学院",
             position: "物理学，本科",
-            description: "完成本科阶段物理学专业课程学习"
+            description: "物理学（强基计划）"
         }
     ],
     en: [
@@ -89,13 +89,13 @@ const academicExperience = {
             period: "2025 - Present",
             institution: "TianQin Research Center, School of Physics and Astronomy, Sun Yat-sen University",
             position: "PhD Student, Theory Group",
-            description: "Focusing on gravitational wave astronomy and gravitational theory research"
+            description: "Advisors: Jianwei Mei, Yi-Ming Hu"
         },
         {
             period: "2021 - 2025",
             institution: "School of Physics and Astronomy, Sun Yat-sen University",
             position: "B.Sc. in Physics",
-            description: "Completed undergraduate physics curriculum"
+            description: "Physics (Pilot Reform Program of Enrollment for Fundamental Disciplines)"
         }
     ]
 };
