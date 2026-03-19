@@ -15,7 +15,7 @@
     --brand-deep: #0a4f86;
     --card: rgba(236, 247, 255, 0.42);
     --shadow: 0 24px 60px rgba(6, 30, 56, 0.24);
-    --bg-image: url("fig/ishan-seefromthesky-BMJWpck6eQA-unsplash.jpg");
+    --bg-image: url("fig/1.jpg");
 }
 
 :root[data-bg-theme="green"] {

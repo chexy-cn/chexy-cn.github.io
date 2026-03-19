@@ -4,8 +4,6 @@
         "fig/2.jpg"
     ];
 
-    const STORAGE_KEY = "site_bg_index_v1";
-    const STORAGE_KEY_SET = "site_bg_set_v1";
     const repoApi = "https://api.github.com/repos/chexy-cn/chexy-cn.github.io/contents/fig";
     const themeCache = new Map();
     let layerA = null;
@@ -171,16 +169,7 @@
         const images = await loadImages();
         if (!images.length) return;
 
-        const currentSet = images.join("|");
-        const prevSet = localStorage.getItem(STORAGE_KEY_SET);
-        if (prevSet !== currentSet) {
-            localStorage.setItem(STORAGE_KEY, "0");
-            localStorage.setItem(STORAGE_KEY_SET, currentSet);
-        }
-
-        let idx = Number.parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10);
-        if (!Number.isFinite(idx) || idx < 0) idx = 0;
-        idx %= images.length;
+        let idx = 0;
         setBg(images[idx]); // fallback for no-JS/slow init
         crossfadeTo(images[idx]);
         applyThemeForImage(images[idx]);
@@ -188,7 +177,6 @@
         document.addEventListener("click", (e) => {
             if (shouldIgnoreClick(e.target)) return;
             idx = (idx + 1) % images.length;
-            localStorage.setItem(STORAGE_KEY, String(idx));
             crossfadeTo(images[idx]);
             setBg(images[idx]); // keep css var in sync as fallback
             applyThemeForImage(images[idx]);
