@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f3f7ff;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --line: rgba(148, 163, 184, 0.28);
+    --text-main: #0f172a;
+    --text-sub: #334155;
+    --text-muted: #64748b;
+    --brand: #0b5bff;
+    --brand-deep: #0a3ea8;
+    --shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--text-main);
+    background:
+        radial-gradient(650px 320px at 12% -8%, rgba(11, 91, 255, 0.15), transparent 70%),
+        linear-gradient(180deg, #f6f9ff, var(--bg));
+}
+
+.container {
+    width: min(980px, calc(100% - 2rem));
+    margin: 0 auto;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(246, 250, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--text-main);
+    font-family: 'Manrope', 'Noto Sans SC', sans-serif;
+    font-weight: 800;
+}
+
+.back-home {
+    text-decoration: none;
+    color: var(--brand-deep);
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+
+.main {
+    padding: 1.6rem 0 2rem;
+}
+
+.hero {
+    margin-bottom: 1.2rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(11, 91, 255, 0.1);
+    color: var(--brand-deep);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+}
+
+h1, h2, h3 {
+    font-family: 'Manrope', 'Noto Sans SC', sans-serif;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.34rem;
+    margin-bottom: 0.8rem;
+}
+
+h3 {
+    font-size: 1.03rem;
+    margin-bottom: 0.35rem;
+}
+
+.block {
+    margin-top: 1rem;
+}
+
+.list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.timeline {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0.75rem;
+}
+
+.time {
+    color: var(--brand-deep);
+    font-weight: 700;
+}
+
+.sub {
+    color: var(--text-sub);
+    font-weight: 600;
+}
+
+.muted {
+    color: var(--text-muted);
+}
+
+.links {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.links a {
+    text-decoration: none;
+    color: var(--brand-deep);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+ul {
+    margin-left: 1.2rem;
+    color: var(--text-sub);
+}
+
+.tags {
+    display: flex;
+    gap: 0.45rem;
+    margin-top: 0.6rem;
+}
+
+.tags span {
+    border-radius: 999px;
+    padding: 0.2rem 0.6rem;
+    background: rgba(11, 91, 255, 0.1);
+    color: var(--brand-deep);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+@media (max-width: 680px) {
+    .timeline {
+        grid-template-columns: 1fr;
+    }
+}
