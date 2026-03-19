@@ -17,6 +17,12 @@
     --bg-image: url("fig/1.jpg");
 }
 
+@media (max-width: 768px) {
+    :root {
+        --bg-image: url("fig1/1.jpg");
+    }
+}
+
 :root[data-bg-theme="green"] {
     --bg-card: rgba(239, 251, 243, 0.44);
     --line: rgba(22, 55, 42, 0.3);

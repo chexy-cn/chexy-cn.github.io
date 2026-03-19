@@ -1,10 +1,10 @@
 (function () {
-    const DEFAULT_IMAGES = [
-        "fig/1.jpg",
-        "fig/2.jpg"
-    ];
+    const DEFAULT_IMAGES = {
+        fig: ["fig/1.jpg", "fig/2.jpg"],
+        fig1: ["fig1/1.jpg", "fig1/2.jpg", "fig1/3.jpg"]
+    };
 
-    const repoApi = "https://api.github.com/repos/chexy-cn/chexy-cn.github.io/contents/fig";
+    const REPO_API_BASE = "https://api.github.com/repos/chexy-cn/chexy-cn.github.io/contents/";
     const themeCache = new Map();
     let layerA = null;
     let layerB = null;
@@ -30,19 +30,27 @@
         });
     }
 
+    function getImageFolder() {
+        return window.matchMedia("(max-width: 768px)").matches ? "fig1" : "fig";
+    }
+
     async function loadImages() {
+        const folder = getImageFolder();
+        const defaultForFolder = sortByNumericFilename(DEFAULT_IMAGES[folder] || []);
+        const fallbackDesktop = sortByNumericFilename(DEFAULT_IMAGES.fig || []);
         try {
-            const resp = await fetch(repoApi, { headers: { Accept: "application/vnd.github+json" } });
-            if (!resp.ok) return DEFAULT_IMAGES;
+            const resp = await fetch(`${REPO_API_BASE}${folder}`, { headers: { Accept: "application/vnd.github+json" } });
+            if (!resp.ok) return defaultForFolder.length ? defaultForFolder : fallbackDesktop;
             const items = await resp.json();
             const images = Array.isArray(items)
                 ? items
                     .filter((item) => item && item.type === "file" && isImageFile(item.name))
-                    .map((item) => `fig/${item.name}`)
+                    .map((item) => `${folder}/${item.name}`)
                 : [];
-            return images.length ? sortByNumericFilename(images) : sortByNumericFilename(DEFAULT_IMAGES);
+            if (images.length) return sortByNumericFilename(images);
+            return defaultForFolder.length ? defaultForFolder : fallbackDesktop;
         } catch {
-            return sortByNumericFilename(DEFAULT_IMAGES);
+            return defaultForFolder.length ? defaultForFolder : fallbackDesktop;
         }
     }
 
