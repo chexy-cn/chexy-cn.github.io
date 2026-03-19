@@ -322,7 +322,7 @@ p { margin-bottom: 1rem; }
     margin-bottom: 1rem;
 }
 
-.blog-meta {
+.blog-card .blog-meta {
     display: flex;
     justify-content: space-between;
     color: var(--text-muted);
@@ -509,62 +509,6 @@ p { margin-bottom: 1rem; }
     font-size: 0.875rem;
 }
 
-/* About Section */
-.about-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.about-text .section-header {
-    text-align: left;
-    margin-bottom: 2rem;
-}
-
-.about-details p {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-}
-
-.skills {
-    margin-top: 2rem;
-}
-
-.skills h4 {
-    margin-bottom: 1rem;
-}
-
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.skill-tag {
-    background: var(--primary-color);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-}
-
-.about-image {
-    display: flex;
-    justify-content: center;
-}
-
-.avatar {
-    font-size: 8rem;
-    background: var(--bg-tertiary);
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* Contact Section */
 .contact-form {
     max-width: 600px;
@@ -643,7 +587,7 @@ p { margin-bottom: 1rem; }
     margin-bottom: 1rem;
 }
 
-.blog-meta {
+.blog-header .blog-meta {
     display: flex;
     justify-content: center;
     gap: 2rem;
@@ -810,15 +754,6 @@ p { margin-bottom: 1rem; }
         grid-template-columns: 1fr;
     }
 
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .about-text .section-header {
-        text-align: center;
-    }
-
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -836,11 +771,6 @@ p { margin-bottom: 1rem; }
         padding: 60px 0;
     }
 
-    .avatar {
-        width: 150px;
-        height: 150px;
-        font-size: 6rem;
-    }
 }
 
 @media (max-width: 480px) {

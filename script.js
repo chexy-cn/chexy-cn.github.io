@@ -7,28 +7,17 @@ const translations = {
         navResearch: "学术研究",
         navBlog: "最新动态",
         navProjects: "项目与开发",
-        navAbout: "关于我",
         heroTitle: "车昕益 (Xinyi Che)",
         heroResearch: "学术研究",
-        heroAbout: "关于我",
         sectionExperience: "学术经历",
         sectionResearch: "学术研究",
         sectionBlog: "最新动态",
         sectionProjects: "项目与开发",
-        sectionAbout: "关于我",
         inspireLink: "在 INSPIRE 上查看完整记录",
         projectSampleTitle: "示例项目名称",
         projectSampleDesc: "这是一个占位示例，旨在展示项目卡片的布局效果。您可以在未来添加实际参与的科研工具、数据处理脚本或开源项目。",
         tagPython: "Python",
         tagTool: "科研工具",
-        aboutP1: "这是一个关于我的示例介绍。您可以在此简要描述您的研究兴趣、学术背景以及在科研之外的爱好。这部分旨在让访问者对您有一个更全面的初步了解。",
-        aboutP2: "示例占位文字：目前我专注于引力物理领域的探索，并持续学习相关的数据分析与数值计算技术。我热爱跨学科的交流，并致力于将复杂的物理概念以更直观的方式呈现出来。",
-        skillsTitle: "示例技能与工具",
-        skill1: "物理建模",
-        skill2: "数值模拟",
-        skill3: "数据处理",
-        skill4: "LaTeX",
-        skill5: "示例标签",
         backBtn: "返回文章列表",
         footerNavTitle: "导航",
         footerLinkTitle: "链接"
@@ -40,28 +29,17 @@ const translations = {
         navResearch: "Research",
         navBlog: "News",
         navProjects: "Projects",
-        navAbout: "About",
         heroTitle: "Xinyi Che",
         heroResearch: "Research",
-        heroAbout: "About Me",
         sectionExperience: "Academic Experience",
         sectionResearch: "Research",
         sectionBlog: "Latest News",
         sectionProjects: "Projects & Development",
-        sectionAbout: "About Me",
         inspireLink: "View full records on INSPIRE",
         projectSampleTitle: "Sample Project Name",
         projectSampleDesc: "This is a placeholder example to demonstrate the project card layout. You can add actual research tools, data scripts, or open-source projects in the future.",
         tagPython: "Python",
         tagTool: "Research Tool",
-        aboutP1: "This is a sample introduction about me. You can briefly describe your research interests, academic background, and hobbies outside of research here. This section aims to provide visitors with a more comprehensive first impression.",
-        aboutP2: "Sample placeholder: Currently, I focus on exploring gravitational physics and continuously learn related data analysis and numerical calculation techniques. I enjoy interdisciplinary exchange and aim to present complex physical concepts more intuitively.",
-        skillsTitle: "Sample Skills & Tools",
-        skill1: "Physical Modeling",
-        skill2: "Numerical Simulation",
-        skill3: "Data Processing",
-        skill4: "LaTeX",
-        skill5: "Sample Tag",
         backBtn: "Back to List",
         footerNavTitle: "Navigation",
         footerLinkTitle: "Links"
@@ -107,7 +85,7 @@ const blogPosts = {
             title: "本科毕业",
             excerpt: "本科阶段完成两项大创项目及毕业设计。",
             content: `<h2>本科毕业</h2><p>完成大创项目：利用引力波探测环双白矮星的系外行星</p><p>完成大创项目：神经网络无波前自适应光学</p><p>完成毕业设计：利用引力波限制dCS理论</p>`,
-            date: "2026-03-18",
+            date: "2025年6月21日",
             category: "学术经历",
             readTime: "1 min"
         }
@@ -118,7 +96,7 @@ const blogPosts = {
             title: "Undergraduate Graduation",
             excerpt: "Completed two undergraduate innovation projects and a graduation thesis.",
             content: `<h2>Undergraduate Graduation</h2><p>Completed Undergraduate Innovation Project: Detecting Exoplanets Around Circumbinary White Dwarfs with Gravitational Waves</p><p>Completed Undergraduate Innovation Project: Wavefront-less Adaptive Optics Based on Neural Networks</p><p>Completed Graduation Thesis: Constraining dCS Theory Using Gravitational Waves</p>`,
-            date: "2026-03-18",
+            date: "June 21, 2025",
             category: "Academic Milestone",
             readTime: "1 min"
         }
@@ -186,6 +164,7 @@ function initDomReferences() {
     dom.actionButtons = document.querySelectorAll('.btn');
     dom.header = document.querySelector('.header');
     dom.backToBlogBtn = document.getElementById('back-to-blog');
+    dom.currentYear = document.getElementById('current-year');
 }
 
 function setMainPageVisibility(visible) {
@@ -278,9 +257,9 @@ function showPaperList() {
                     <span>${paper.date}</span>
                 </div>
                 <div class="paper-links">
-                    ${paper.arxiv ? `<a href="https://arxiv.org/abs/${paper.arxiv}" target="_blank" class="paper-link">arXiv</a>` : ''}
-                    ${paper.doi ? `<a href="https://doi.org/${paper.doi}" target="_blank" class="paper-link">DOI</a>` : ''}
-                    <a href="${paper.inspireUrl}" target="_blank" class="paper-link">INSPIRE</a>
+                    ${paper.arxiv ? `<a href="https://arxiv.org/abs/${paper.arxiv}" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv</a>` : ''}
+                    ${paper.doi ? `<a href="https://doi.org/${paper.doi}" target="_blank" rel="noopener noreferrer" class="paper-link">DOI</a>` : ''}
+                    <a href="${paper.inspireUrl}" target="_blank" rel="noopener noreferrer" class="paper-link">INSPIRE</a>
                 </div>
             </div>
             </div>
@@ -353,6 +332,7 @@ function toggleMobileMenu() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initDomReferences();
+    if (dom.currentYear) dom.currentYear.textContent = String(new Date().getFullYear());
 
     // 语言切换监听
     dom.langZh.addEventListener('click', () => setLanguage('zh'));
