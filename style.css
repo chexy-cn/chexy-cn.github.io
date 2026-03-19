@@ -7,24 +7,77 @@
 :root {
     --bg-1: #f3f8ff;
     --bg-2: #e7f0ff;
-    --text-main: #0f172a;
-    --text-sub: #334155;
-    --text-muted: #64748b;
-    --line: rgba(148, 163, 184, 0.28);
-    --brand: #0b5bff;
-    --brand-deep: #0a3ea8;
-    --card: rgba(255, 255, 255, 0.78);
-    --shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+    --text-main: #041a33;
+    --text-sub: #0f365d;
+    --text-muted: #2a5a82;
+    --line: rgba(7, 44, 76, 0.24);
+    --brand: #0f7ac2;
+    --brand-deep: #0a4f86;
+    --card: rgba(236, 247, 255, 0.42);
+    --shadow: 0 24px 60px rgba(6, 30, 56, 0.24);
+    --bg-image: url("fig/ishan-seefromthesky-BMJWpck6eQA-unsplash.jpg");
+}
+
+:root[data-bg-theme="green"] {
+    --text-main: #10261c;
+    --text-sub: #1f4635;
+    --text-muted: #2f6450;
+    --line: rgba(22, 55, 42, 0.3);
+    --brand: #237a5b;
+    --brand-deep: #1b5d47;
+    --card: rgba(239, 251, 243, 0.42);
+    --shadow: 0 24px 60px rgba(10, 38, 29, 0.26);
 }
 
 body {
     min-height: 100vh;
     font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     color: var(--text-main);
+    position: relative;
     background:
         radial-gradient(780px 400px at 8% -10%, rgba(11, 91, 255, 0.20), transparent 70%),
         radial-gradient(680px 360px at 92% 8%, rgba(14, 165, 163, 0.15), transparent 70%),
         linear-gradient(180deg, var(--bg-1), var(--bg-2));
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: transparent;
+}
+
+body.js-bg-enhanced::before {
+    display: none;
+}
+
+.bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 420ms ease;
+    pointer-events: none;
+}
+
+.bg-layer.active {
+    opacity: 1;
 }
 
 .landing {
@@ -34,6 +87,12 @@ body {
     padding: 1rem;
     position: relative;
     overflow: hidden;
+}
+
+.landing-content {
+    width: min(760px, 100%);
+    position: relative;
+    z-index: 1;
 }
 
 .ambient {
@@ -59,7 +118,7 @@ body {
 }
 
 .card {
-    width: min(640px, 100%);
+    width: 100%;
     text-align: center;
     padding: clamp(1.5rem, 3.4vw, 2.6rem);
     border: 1px solid var(--line);
@@ -67,8 +126,47 @@ body {
     background: var(--card);
     backdrop-filter: blur(12px);
     box-shadow: var(--shadow);
-    position: relative;
-    z-index: 1;
+}
+
+.links {
+    margin-top: 1.05rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.links a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--brand-deep);
+    border: 1px solid rgba(10, 79, 134, 0.3);
+    background: rgba(237, 248, 255, 0.48);
+    border-radius: 9px;
+    padding: 0.48rem;
+    font-size: 0.84rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.link-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.links a:hover {
+    transform: translateY(-2px);
+    background: rgba(244, 252, 255, 0.62);
+    border-color: rgba(10, 79, 134, 0.52);
 }
 
 .badge {
@@ -112,38 +210,52 @@ h1 {
     font-size: 0.98rem;
 }
 
-.links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.65rem;
+.quick-grid {
+    margin-top: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.55rem;
 }
 
-.links a {
+.quick-card {
+    display: grid;
+    place-items: center;
     text-decoration: none;
     color: var(--brand-deep);
-    border: 1px solid rgba(11, 91, 255, 0.25);
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 0.5rem 0.9rem;
-    font-size: 0.9rem;
+    border: 1px solid var(--line);
+    background: rgba(236, 247, 255, 0.46);
+    border-radius: 12px;
+    min-height: 52px;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.links a:hover {
+.quick-card:hover {
     transform: translateY(-2px);
-    background: #ffffff;
-    border-color: rgba(11, 91, 255, 0.45);
+    background: rgba(244, 252, 255, 0.62);
+    border-color: rgba(10, 79, 134, 0.52);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
 }
 
 @media (max-width: 520px) {
+    .landing-content {
+        width: min(640px, 100%);
+    }
+
     .card {
         border-radius: 20px;
     }
 
-    .links {
-        gap: 0.5rem;
+    .quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.55rem;
+    }
+
+    .quick-card {
+        min-height: 56px;
     }
 
     .links a {

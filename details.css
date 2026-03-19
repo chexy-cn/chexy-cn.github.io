@@ -6,22 +6,75 @@
 
 :root {
     --bg: #f3f7ff;
-    --bg-card: rgba(255, 255, 255, 0.9);
-    --line: rgba(148, 163, 184, 0.28);
-    --text-main: #0f172a;
-    --text-sub: #334155;
-    --text-muted: #64748b;
-    --brand: #0b5bff;
-    --brand-deep: #0a3ea8;
-    --shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    --bg-card: rgba(236, 247, 255, 0.44);
+    --line: rgba(7, 44, 76, 0.24);
+    --text-main: #041a33;
+    --text-sub: #0f365d;
+    --text-muted: #2a5a82;
+    --brand: #0f7ac2;
+    --brand-deep: #0a4f86;
+    --shadow: 0 14px 30px rgba(6, 30, 56, 0.18);
+    --bg-image: url("fig/ishan-seefromthesky-BMJWpck6eQA-unsplash.jpg");
+}
+
+:root[data-bg-theme="green"] {
+    --bg-card: rgba(239, 251, 243, 0.44);
+    --line: rgba(22, 55, 42, 0.3);
+    --text-main: #10261c;
+    --text-sub: #1f4635;
+    --text-muted: #2f6450;
+    --brand: #237a5b;
+    --brand-deep: #1b5d47;
+    --shadow: 0 14px 30px rgba(10, 38, 29, 0.2);
 }
 
 body {
     font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     color: var(--text-main);
+    position: relative;
     background:
         radial-gradient(650px 320px at 12% -8%, rgba(11, 91, 255, 0.15), transparent 70%),
         linear-gradient(180deg, #f6f9ff, var(--bg));
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: transparent;
+}
+
+body.js-bg-enhanced::before {
+    display: none;
+}
+
+.bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 420ms ease;
+    pointer-events: none;
+}
+
+.bg-layer.active {
+    opacity: 1;
 }
 
 .container {
@@ -33,7 +86,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(246, 250, 255, 0.9);
+    background: rgba(236, 247, 255, 0.46);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
 }
@@ -135,6 +188,11 @@ h3 {
     color: var(--text-muted);
 }
 
+.me {
+    color: var(--brand-deep);
+    font-weight: 700;
+}
+
 .links {
     margin-top: 0.5rem;
     display: flex;
@@ -167,6 +225,20 @@ ul {
     color: var(--brand-deep);
     font-size: 0.82rem;
     font-weight: 700;
+}
+
+.research-more {
+    margin-top: 0.7rem;
+}
+
+.research-more a {
+    text-decoration: none;
+    color: var(--brand-deep);
+    font-weight: 700;
+}
+
+.research-more a:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 680px) {
