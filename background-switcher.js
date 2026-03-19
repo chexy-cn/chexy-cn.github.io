@@ -1,10 +1,11 @@
 (function () {
     const DEFAULT_IMAGES = [
-        "fig/ishan-seefromthesky-BMJWpck6eQA-unsplash.jpg",
-        "fig/joel-vodell-TApAkERW5pQ-unsplash.jpg"
+        "fig/1.jpg",
+        "fig/2.jpg"
     ];
 
     const STORAGE_KEY = "site_bg_index_v1";
+    const STORAGE_KEY_SET = "site_bg_set_v1";
     const repoApi = "https://api.github.com/repos/chexy-cn/chexy-cn.github.io/contents/fig";
     const themeCache = new Map();
     let layerA = null;
@@ -13,6 +14,22 @@
 
     function isImageFile(name) {
         return /\.(png|jpe?g|webp|avif|gif)$/i.test(name);
+    }
+
+    function sortByNumericFilename(paths) {
+        return [...paths].sort((a, b) => {
+            const nameA = a.split("/").pop() || a;
+            const nameB = b.split("/").pop() || b;
+            const numA = Number.parseInt(nameA, 10);
+            const numB = Number.parseInt(nameB, 10);
+            const hasNumA = Number.isFinite(numA);
+            const hasNumB = Number.isFinite(numB);
+
+            if (hasNumA && hasNumB && numA !== numB) return numA - numB;
+            if (hasNumA && !hasNumB) return -1;
+            if (!hasNumA && hasNumB) return 1;
+            return nameA.localeCompare(nameB, undefined, { numeric: true, sensitivity: "base" });
+        });
     }
 
     async function loadImages() {
@@ -25,9 +42,9 @@
                     .filter((item) => item && item.type === "file" && isImageFile(item.name))
                     .map((item) => `fig/${item.name}`)
                 : [];
-            return images.length ? images : DEFAULT_IMAGES;
+            return images.length ? sortByNumericFilename(images) : sortByNumericFilename(DEFAULT_IMAGES);
         } catch {
-            return DEFAULT_IMAGES;
+            return sortByNumericFilename(DEFAULT_IMAGES);
         }
     }
 
@@ -153,6 +170,13 @@
     async function init() {
         const images = await loadImages();
         if (!images.length) return;
+
+        const currentSet = images.join("|");
+        const prevSet = localStorage.getItem(STORAGE_KEY_SET);
+        if (prevSet !== currentSet) {
+            localStorage.setItem(STORAGE_KEY, "0");
+            localStorage.setItem(STORAGE_KEY_SET, currentSet);
+        }
 
         let idx = Number.parseInt(localStorage.getItem(STORAGE_KEY) || "0", 10);
         if (!Number.isFinite(idx) || idx < 0) idx = 0;
