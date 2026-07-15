@@ -1,6 +1,6 @@
 (function () {
     const DEFAULT_IMAGES = {
-        fig: ["fig/1.jpg", "fig/2.jpg"],
+        fig: ["fig/2.jpg"],
         fig1: ["fig1/1.jpg", "fig1/2.jpg", "fig1/3.jpg"]
     };
 
@@ -174,6 +174,8 @@
     }
 
     async function init() {
+        if (window.matchMedia("(max-width: 768px)").matches) return;
+
         const images = await loadImages();
         if (!images.length) return;
 
