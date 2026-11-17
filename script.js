@@ -7,7 +7,7 @@ const translations = {
         navResearch: "学术研究",
         navBlog: "最新动态",
         navProjects: "项目与开发",
-        heroTitle: "车昕益 (Xinyi Che)",
+        heroTitle: "车昕益 (Xin-Yi Che)",
         heroResearch: "学术研究",
         sectionExperience: "学术经历",
         sectionResearch: "学术研究",
@@ -23,13 +23,13 @@ const translations = {
         footerLinkTitle: "链接"
     },
     en: {
-        navLogo: "Xinyi Che",
+        navLogo: "Xin-Yi Che",
         navHome: "Home",
         navExperience: "Experience",
         navResearch: "Research",
         navBlog: "News",
         navProjects: "Projects",
-        heroTitle: "Xinyi Che",
+        heroTitle: "Xin-Yi Che",
         heroResearch: "Research",
         sectionExperience: "Academic Experience",
         sectionResearch: "Research",
@@ -107,7 +107,7 @@ const researchPapers = [
     {
         id: 1,
         title: "Constraining the dynamical Chern-Simons gravity with future gravitational wave detectors",
-        authors: ["Xinyi Che", "Xiangyu Lyu", "Changfu Shi"],
+        authors: ["Xin-Yi Che", "Xiangyu Lyu", "Changfu Shi"],
         journal: "e-Print: 2512.22762 [gr-qc]",
         date: "2025-12",
         doi: "",
@@ -117,7 +117,7 @@ const researchPapers = [
     {
         id: 2,
         title: "Gravitational waves and cosmic boundary",
-        authors: ["Changfu Shi", "Xinyi Che", "Zeyu Huang", "Yi-Ming Hu", "Jianwei Mei"],
+        authors: ["Changfu Shi", "Xin-Yi Che", "Zeyu Huang", "Yi-Ming Hu", "Jianwei Mei"],
         journal: "Phys. Rev. D 111 (2025) 023022",
         date: "2025-01",
         doi: "10.1103/PhysRevD.111.023022",
@@ -244,7 +244,7 @@ function showPaperList() {
 
     dom.paperList.innerHTML = researchPapers.map(paper => {
         const processedAuthors = paper.authors.map(author => 
-            author === "Xinyi Che" ? `<strong>${author}</strong>` : author
+            author === "Xin-Yi Che" ? `<strong>${author}</strong>` : author
         ).join(', ');
 
         return `
