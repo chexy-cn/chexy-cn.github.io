@@ -1,4 +1,4 @@
-# chexy-cn.github.io
+# [chexy-cn.github.io](https://chexy-cn.github.io/)
 
 纯静态的个人学术主页，通过 GitHub Pages 发布，无需构建。
 
