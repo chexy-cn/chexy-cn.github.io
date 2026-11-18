@@ -1,52 +1,77 @@
 :root {
-    color-scheme: light;
+    --text: #242729;
+    --muted: #51565a;
+    --bg: #fff;
+    --link: #245479;
+    --link-hover: #143450;
+    --line: #dadde0;
+    --control-line: #cdd1d4;
+    --control-active: #eef1f3;
+
+    color-scheme: light dark;
     font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
-    color: #242729;
-    background: #fff;
+    color: var(--text);
+    background: var(--bg);
     line-height: 1.65;
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #e3e5e7;
+        --muted: #a5abb0;
+        --bg: #16181a;
+        --link: #8cb8dc;
+        --link-hover: #b9d5ec;
+        --line: #34383c;
+        --control-line: #474c51;
+        --control-active: #262a2e;
+    }
+}
+
+/* 英文访客：在 lang-manager.js 完成替换前隐藏待翻译文字，避免先闪一下中文 */
+html[data-lang-pending] [data-en] { visibility: hidden; }
 
 * { box-sizing: border-box; }
 body { width: min(100% - 2rem, 46rem); margin: 0 auto; padding: 3rem 0; }
 h1, h2, h3, p { margin: 0; }
 h1, h2, h3 { line-height: 1.3; }
 h1 { font-size: clamp(1.85rem, 6vw, 2.6rem); }
-h1 span { display: block; color: #51565a; font-size: 0.52em; margin-top: 0.3rem; }
+h1 span { display: block; color: var(--muted); font-size: 0.52em; margin-top: 0.3rem; }
 h2 { font-size: 1.4rem; }
 h3 { font-size: 1.05rem; overflow-wrap: anywhere; }
 
-a { color: #245479; text-underline-offset: 0.18em; }
-a:hover { color: #143450; }
-:focus-visible { outline: 2px solid #245479; outline-offset: 3px; }
+a { color: var(--link); text-underline-offset: 0.18em; }
+a:hover { color: var(--link-hover); }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
 .heading-row { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.8rem; }
 .tagline { margin-top: 0.75rem; }
 .language button {
     min-height: 2.25rem;
-    border: 1px solid #cdd1d4;
+    border: 1px solid var(--control-line);
     border-radius: 0.25rem;
-    background: #fff;
+    background: var(--bg);
     color: inherit;
     padding: 0.2rem 0.55rem;
     font: inherit;
     font-size: 0.875rem;
     cursor: pointer;
 }
-.language button[aria-pressed="true"] { background: #eef1f3; font-weight: 650; }
+.language button[aria-pressed="true"] { background: var(--control-active); font-weight: 650; }
 .links, nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem 1.1rem; }
 .site-header .links { margin-top: 0.75rem; gap: 0.35rem; }
 .site-header .links a { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; }
 .wechat-contact { position: relative; }
-.wechat-contact summary { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; list-style: none; color: #245479; cursor: pointer; }
+.wechat-contact summary { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; list-style: none; color: var(--link); cursor: pointer; }
 .wechat-contact summary::-webkit-details-marker { display: none; }
-.wechat-contact summary:hover { color: #143450; }
-.wechat-id { position: absolute; z-index: 1; inset-inline-end: 0; top: 100%; padding: 0.45rem 0.65rem; border: 1px solid #dadde0; border-radius: 0.25rem; background: #fff; white-space: nowrap; }
+.wechat-contact summary:hover { color: var(--link-hover); }
+.wechat-id { position: absolute; z-index: 1; inset-inline-end: 0; top: 100%; padding: 0.45rem 0.65rem; border: 1px solid var(--line); border-radius: 0.25rem; background: var(--bg); white-space: nowrap; }
 .link-icon { display: flex; }
 .link-icon svg { width: 1.25rem; height: 1.25rem; }
 nav { margin: 0.8rem 0 1.4rem; }
 nav a { padding: 0.3rem 0; font-weight: 600; }
 
-main section { padding: 1.35rem 0 1.65rem; border-top: 1px solid #dadde0; scroll-margin-top: 1rem; }
-.muted, .time { color: #51565a; }
+main section { padding: 1.35rem 0 1.65rem; border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
+.muted, .time { color: var(--muted); }
 main section h2 { margin-bottom: 1rem; }
 article + article { margin-top: 1.2rem; }
 .news-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; }
@@ -56,7 +81,6 @@ article p, .research-more { margin-top: 0.25rem; }
 .timeline { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 0.5rem; }
 .timeline .time { margin: 0; }
 .me { font-weight: 650; }
-.tags { display: flex; flex-wrap: wrap; gap: 0.65rem; font-size: 0.875rem; color: #51565a; }
 ul { margin: 0.45rem 0 0; padding-inline-start: 1.3rem; }
 
 @media (max-width: 540px) {

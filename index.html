@@ -5,8 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="车昕益的个人主页，聚焦引力物理与引力波研究。">
     <title>车昕益 | 个人主页</title>
-    <link rel="stylesheet" href="style.css?v=6">
-    <script src="lang-manager.js?v=4" defer></script>
+    <script>
+        // 在首次绘制前确定语言，避免英文访客先看到中文
+        (function () {
+            var language;
+            try { language = localStorage.getItem("site_lang_v1"); } catch (e) {}
+            if (language !== "zh" && language !== "en") {
+                var preferred = (navigator.languages && navigator.languages[0]) || navigator.language || "zh";
+                language = preferred.toLowerCase().indexOf("zh") === 0 ? "zh" : "en";
+            }
+            var root = document.documentElement;
+            if (language === "en") {
+                root.lang = "en";
+                root.setAttribute("data-lang-pending", "");
+                // 兜底：若 lang-manager.js 加载失败，3 秒后仍显示中文原文
+                setTimeout(function () { root.removeAttribute("data-lang-pending"); }, 3000);
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://chexy-cn.github.io/">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#16181a" media="(prefers-color-scheme: dark)">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://chexy-cn.github.io/">
+    <meta property="og:title" content="车昕益 Xin-Yi Che">
+    <meta property="og:description" content="引力波数据处理 · 引力理论 | Gravitational-wave data analysis · Gravitational theory">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="profile:first_name" content="Xin-Yi">
+    <meta property="profile:last_name" content="Che">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@r1luosenl1n">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Xin-Yi Che",
+        "alternateName": "车昕益",
+        "url": "https://chexy-cn.github.io/",
+        "email": "mailto:chexy@mail2.sysu.edu.cn",
+        "jobTitle": "PhD Student",
+        "affiliation": {
+            "@type": "CollegeOrUniversity",
+            "name": "Sun Yat-sen University",
+            "department": { "@type": "Organization", "name": "TianQin Research Center, School of Physics and Astronomy" }
+        },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Sun Yat-sen University" },
+        "knowsAbout": ["Gravitational waves", "Gravitational-wave data analysis", "Gravitational theory", "Dynamical Chern-Simons gravity"],
+        "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "ORCID",
+            "value": "0009-0006-0403-3194"
+        },
+        "sameAs": [
+            "https://orcid.org/0009-0006-0403-3194",
+            "https://github.com/chexy-cn",
+            "https://inspirehep.net/authors/2862861",
+            "https://x.com/r1luosenl1n"
+        ]
+    }
+    </script>
+    <link rel="stylesheet" href="style.css?v=7">
+    <script src="lang-manager.js?v=5" defer></script>
+    <script src="site.js?v=1" defer></script>
 </head>
 <body>
     <header class="site-header">
@@ -17,12 +79,19 @@
                 <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
             </div>
         </div>
-        <p class="tagline">引力波数据处理 · 引力理论</p>
-        <div class="links" aria-label="外部链接">
+        <p class="tagline" data-en="Gravitational-wave data analysis · Gravitational theory">引力波数据处理 · 引力理论</p>
+        <div class="links" aria-label="外部链接" data-en-aria-label="External links">
                     <a href="https://github.com/chexy-cn" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
                         <span class="link-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.08 3.29 9.4 7.85 10.93.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.55-3.87-1.55-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.19 1.75 1.19 1.02 1.77 2.68 1.26 3.33.97.1-.75.4-1.26.73-1.55-2.56-.3-5.26-1.29-5.26-5.74 0-1.27.45-2.31 1.19-3.12-.12-.3-.52-1.52.11-3.16 0 0 .97-.31 3.18 1.19a10.9 10.9 0 0 1 5.79 0c2.2-1.5 3.17-1.19 3.17-1.19.64 1.64.24 2.86.12 3.16.74.81 1.19 1.85 1.19 3.12 0 4.46-2.7 5.44-5.28 5.73.42.36.79 1.07.79 2.16v3.2c0 .3.2.66.79.55 4.56-1.53 7.84-5.85 7.84-10.93C23.5 5.66 18.35.5 12 .5Z"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://orcid.org/0009-0006-0403-3194" target="_blank" rel="noopener noreferrer" aria-label="ORCID: 0009-0006-0403-3194" title="ORCID: 0009-0006-0403-3194">
+                        <span class="link-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"></path>
                             </svg>
                         </span>
                     </a>
@@ -61,37 +130,37 @@
                     </details>
                 </div>
         <nav aria-label="页面导航 / Page navigation">
-            <a href="#experience">学术经历</a>
-            <a href="#research">学术研究</a>
-            <a href="#news">最新动态</a>
-            <a href="#projects">项目开发</a>
+            <a href="#experience" data-en="Academic Experience">学术经历</a>
+            <a href="#research" data-en="Research">学术研究</a>
+            <a href="#news" data-en="News">最新动态</a>
+            <a href="#projects" data-en="Projects">项目开发</a>
         </nav>
     </header>
     <main>
         <section id="experience" aria-labelledby="experience-heading">
-            <h2 id="experience-heading">学术经历</h2>
+            <h2 id="experience-heading" data-en="Academic Experience">学术经历</h2>
             <div class="list">
                 <article class="card timeline">
-                    <p class="time">2025 - 至今</p>
+                    <p class="time" data-en="2025 – Present">2025 - 至今</p>
                     <div>
-                        <h3>中山大学物理与天文学院天琴中心</h3>
-                        <p class="sub">理论物理，博士在读</p>
-                        <p class="muted">导师：胡一鸣，梅健伟</p>
+                        <h3 data-en="TianQin Research Center, School of Physics and Astronomy, Sun Yat-sen University">中山大学物理与天文学院天琴中心</h3>
+                        <p class="sub" data-en="PhD Student in Theoretical Physics">理论物理，博士在读</p>
+                        <p class="muted" data-en="Advisors: Yi-Ming Hu, Jianwei Mei">导师：胡一鸣，梅健伟</p>
                     </div>
                 </article>
                 <article class="card timeline">
                     <p class="time">2021 - 2025</p>
                     <div>
-                        <h3>中山大学物理与天文学院</h3>
-                        <p class="sub">物理学，本科</p>
-                        <p class="muted">物理学（强基计划）</p>
+                        <h3 data-en="School of Physics and Astronomy, Sun Yat-sen University">中山大学物理与天文学院</h3>
+                        <p class="sub" data-en="B.Sc. in Physics">物理学，本科</p>
+                        <p class="muted" data-en="Physics (Pilot Reform Program of Enrollment for Fundamental Disciplines)">物理学（强基计划）</p>
                     </div>
                 </article>
             </div>
         </section>
 
         <section id="research" aria-labelledby="research-heading">
-            <h2 id="research-heading">学术研究</h2>
+            <h2 id="research-heading" data-en="Research">学术研究</h2>
             <div class="list">
                 <article class="card">
                     <h3>Constraining the dynamical Chern-Simons gravity with future gravitational wave detectors</h3>
@@ -116,35 +185,35 @@
                 </article>
             </div>
             <p class="research-more">
-                <a href="https://inspirehep.net/authors/2862861?ui-citation-summary=true" target="_blank" rel="noopener noreferrer">在 INSPIRE 上查看完整记录</a>
+                <a href="https://inspirehep.net/authors/2862861?ui-citation-summary=true" target="_blank" rel="noopener noreferrer" data-en="View full records on INSPIRE">在 INSPIRE 上查看完整记录</a>
             </p>
         </section>
 
         <section id="news" aria-labelledby="news-heading">
-            <h2 id="news-heading">最新动态</h2>
+            <h2 id="news-heading" data-en="News">最新动态</h2>
             <article class="card">
                 <header class="news-heading">
-                    <h3>本科毕业</h3>
-                    <p class="muted">2025年6月21日 · 学术经历</p>
+                    <h3 data-en="Undergraduate Graduation">本科毕业</h3>
+                    <p class="muted" data-en="June 21, 2025 · Academic Milestone">2025年6月21日 · 学术经历</p>
                 </header>
                 <ul>
-                    <li>大创项目：利用引力波探测环双白矮星的系外行星</li>
-                    <li>设计性实验：激光监听</li>
-                    <li>大创项目：神经网络无波前自适应光学</li>
-                    <li>毕业设计：利用引力波限制 dCS 理论</li>
+                    <li data-en="Undergraduate Innovation Project: Detecting Exoplanets Around Circumbinary White Dwarfs with Gravitational Waves">大创项目：利用引力波探测环双白矮星的系外行星</li>
+                    <li data-en="Experimental Design Project: Laser Eavesdropping">设计性实验：激光监听</li>
+                    <li data-en="Undergraduate Innovation Project: Wavefront-less Adaptive Optics Based on Neural Networks">大创项目：神经网络无波前自适应光学</li>
+                    <li data-en="Graduation Thesis: Constraining dCS Theory Using Gravitational Waves">毕业设计：利用引力波限制 dCS 理论</li>
                 </ul>
             </article>
         </section>
 
         <section id="projects" aria-labelledby="projects-heading">
-            <h2 id="projects-heading">项目开发</h2>
+            <h2 id="projects-heading" data-en="Projects">项目开发</h2>
             <article class="card" id="project-dcs">
                 <h3><a href="https://github.com/chexy-cn/dCS" target="_blank" rel="noopener noreferrer">dCS</a></h3>
-                <p class="muted">论文 arXiv:2512.22762 的公开复现仓库。</p>
+                <p class="muted" data-en="Public repository for reproducing the results of arXiv:2512.22762.">论文 arXiv:2512.22762 的公开复现仓库。</p>
             </article>
             <article class="card" id="project-population">
                 <h3><a href="https://github.com/chexy-cn/population" target="_blank" rel="noopener noreferrer">population</a></h3>
-                <p class="muted">用于复现 GWTC-4.0 的族群分析，以及 dCS 论文中使用的扩展族群模型。</p>
+                <p class="muted" data-en="Repository for reproducing the GWTC-4.0 population analysis and the extended population model used in the dCS paper.">用于复现 GWTC-4.0 的族群分析，以及 dCS 论文中使用的扩展族群模型。</p>
             </article>
         </section>
     </main>
